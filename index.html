@@ -37,48 +37,32 @@
                 <!-- ricerca -->
                 <div class="searchbar p-2 row bg-white">
                     <button class="btn btn-white col-2"><i class="fas fa-search"></i></button>
-                    <input type="text" v-model="" class="col-10" class="" id="research" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" v-model="userName" class="col-10" class="" id="research" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <!-- lista contatti -->
-                <div class="list overflow-scroll bg-danger">
-                    <!-- <div class="contact w-100 bg-success align-items-center row row-cols-3">
-                        <div class="img-contact col-2">
-                            <img src="img/avatar_1.jpg" alt="">
+                <div class="list overflow-scroll bg-light">
+                        <div @click="setActiveIndex(i)" :class="selected" v-for="(listUsers, i) in contacts" :key="listUsers.avatar" class=" contact-item p-1 justify-content-between align-items-center row row-cols-3">
+                           <div class="image">
+                                <img :src="'img/avatar' + listUsers.avatar +'.jpg'" alt="img">
+                           </div>
+                           <div class="nameUser">
+                                <strong>{{listUsers.name}}</strong>
+                               <div>Ultimo messaggio</div>
+                           </div>
+                           <div class="time text-end">
+                                <div>giorno</div>
+                                <div>orario</div>
+                           </div>
                         </div>
-                        <div class="name-contact px-3 col-8">
-                            <div>Michele</div>
-                            <div>Ultimo messaggio</div>
-                        </div>
-                        <div class="hour-message pe-3 col-2">
-                            <div>Orario</div>
-                        </div>
-                    </div> -->
-                    <ul>
-                        <li v-for="(listUsers, i) in contacts" :key="listUsers.name">
-                            {{ listUsers.name }}
-                        </li>
-                    </ul>
-
-
-
-
-
+                
                 </div>
-
-
-
-
-
-
-
-
             </div>
             <!-- lato dx -->
             <!-- messaggio -->
             <div class="messages position-relative col-8">
                 <div class="profile p-2 row align-content-center bg-white">
                     <div class="img-profile gap-2 row row-cols-2 align-items-center col-8">
-                        <img src="img/avatar_io.jpg" alt="">
+                        <img :src="'img/avatar'+ contacts[activeIndex].avatar +'.jpg'" alt="img">
                         <h5>Sofia</h5>
                     </div>
                     <div class="ul-profile align-self-center col-4">
@@ -89,18 +73,18 @@
                             </ul>
                     </div>
                 </div>    
-                <!-- corpo -->
+                    <!-- corpo -->
                 <div class="body-message overflow-scroll">
-                    <div class="writer">
-                        <p>Lorem ipsum dolo, sit amet consectetur adipisicing elit. Cum soluta, nobis aliquam consequuntur rerum quidem at itaque vel expedita voluptatem, quasi voluptates, corrupti repudiandae sit nam nesciunt quis perspiciatis tempora.</p>
-                    </div>
-                    <div class="answer">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum soluta, nobis aliquam consequuntur rerum quidem at itaque vel expedita voluptatem, quasi voluptates, corrupti repudiandae sit nam nesciunt quis perspiciatis tempora.</p>
-                    </div>
-                    
+                        <div class="writer">
+                            <p>Lorem ipsum dolo, sit amet consectetur adipisicing elit. Cum soluta, nobis aliquam consequuntur rerum quidem at itaque vel expedita voluptatem, quasi voluptates, corrupti repudiandae sit nam nesciunt quis perspiciatis tempora.</p>
+                        </div>
+                        <div class="answer">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum soluta, nobis aliquam consequuntur rerum quidem at itaque vel expedita voluptatem, quasi voluptates, corrupti repudiandae sit nam nesciunt quis perspiciatis tempora.</p>
+                        </div>
+                        
                 </div>
 
-                <!-- emoticon -->
+                    <!-- emoticon -->
                 <div class="keyboard row row-cols-3 align-content-center justify-content-center">
                     <div class="col-1 row justify-content-center align-content-center">
                         <i class="fa-regular text-center fa-face-smile"></i>
@@ -111,7 +95,8 @@
                     <div class="col-1 row text-center justify-content-center align-content-center">
                         <i class="fa-solid fa-microphone"></i>
                     </div>
-                </div>
+                </div>    
+                
             </div>
             
 

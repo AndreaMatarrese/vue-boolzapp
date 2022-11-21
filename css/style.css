@@ -70,3 +70,14 @@ img{
     max-width: calc((100% / 12) * 6)!important; 
 
 }
+.image img{
+    max-height: 80px;
+    max-width: 80px;
+    border-radius: 100%;
+}
+.selected{
+    background-color: #19a38870;
+}
+.contact-item:hover{
+    cursor: pointer;
+}
