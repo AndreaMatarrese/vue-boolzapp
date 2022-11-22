@@ -41,15 +41,15 @@
                 </div>
                 <!-- lista contatti -->
                 <div class="list overflow-scroll bg-light">
-                        <div @click="setActiveIndex(i)" :class="selected" v-for="(listUsers, i) in contacts" :key="listUsers.avatar" class=" contact-item p-1 justify-content-between align-items-center row row-cols-3">
-                           <div class="image">
-                                <img :src="'img/avatar' + listUsers.avatar +'.jpg'" alt="img">
+                        <div @click="setActiveIndex(i)" :class="selected" v-for="(listUsers, i) in contacts" :key="listUsers.avatar" class=" contact-item p-1 py-2 my-1 justify-content-between align-items-center row row-cols-3">
+                           <div class="image col-2">
+                                <img :src="'img/avatar' + listUsers.avatar +'.jpg'" :alt="listUsers.name">
                            </div>
-                           <div class="nameUser">
+                           <div class="nameUser col-8 px-2">
                                 <strong>{{listUsers.name}}</strong>
-                               <div>Ultimo messaggio</div>
+                               <p class="lst-msg">Ultimo messaggio</p>
                            </div>
-                           <div class="time text-end">
+                           <div class="time text-end col-2">
                                 <div>giorno</div>
                                 <div>orario</div>
                            </div>
@@ -63,7 +63,7 @@
                 <div class="profile p-2 row align-content-center bg-white">
                     <div class="img-profile gap-2 row row-cols-2 align-items-center col-8">
                         <img :src="'img/avatar'+ contacts[activeIndex].avatar +'.jpg'" alt="img">
-                        <h5>Sofia</h5>
+                        <h5>{{contacts[activeIndex].name}}</h5>
                     </div>
                     <div class="ul-profile align-self-center col-4">
                             <ul class="float-end">
@@ -74,13 +74,16 @@
                     </div>
                 </div>    
                     <!-- corpo -->
-                <div class="body-message overflow-scroll">
-                        <div class="writer">
-                            <p>Lorem ipsum dolo, sit amet consectetur adipisicing elit. Cum soluta, nobis aliquam consequuntur rerum quidem at itaque vel expedita voluptatem, quasi voluptates, corrupti repudiandae sit nam nesciunt quis perspiciatis tempora.</p>
+                <div class="body-message overflow-scroll pt-3">
+                    <div v-for="(Message, i) in contacts[activeIndex].messages" >
+                        <p class="row justify-content-start">{{ Message.message }}</p>
+                        <p class="date row justify-content-end">{{Message.date}}</p>
+                        <!-- <div class="writer me-5 p-2">
+                            <p>prova</p>
                         </div>
-                        <div class="answer">
+                        <div class="answer ms-5 p-2">
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum soluta, nobis aliquam consequuntur rerum quidem at itaque vel expedita voluptatem, quasi voluptates, corrupti repudiandae sit nam nesciunt quis perspiciatis tempora.</p>
-                        </div>
+                        </div> -->
                         
                 </div>
 
@@ -90,7 +93,7 @@
                         <i class="fa-regular text-center fa-face-smile"></i>
                     </div>
                     <div class="col-9">
-                        <input type="text" class="write p-1 px-3 w-100" placeholder="Scrivi un messaggio">
+                        <input @keyup.enter="sendMessage" type="text" class="write p-1 px-3 w-100" placeholder="Scrivi un messaggio" v-model="sendMex">
                     </div>
                     <div class="col-1 row text-center justify-content-center align-content-center">
                         <i class="fa-solid fa-microphone"></i>

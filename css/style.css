@@ -43,6 +43,10 @@ img{
 .body-message{
     height: calc(90vh - 110px);
     background-image: url('../img/mine.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    flex: 1 0 60%;
 }
 .btn-white{
     background-color: white;
@@ -60,14 +64,16 @@ img{
     border-radius: 1%;
 }
 .writer{
-    background-color: #009688;
+    background-color: #D8FCD2;
     max-width: calc((100% / 12) * 6)!important; 
-    right: 0;
-    
+    align-self: flex-end;
+    border-radius: 10px;    
 }
 .answer{
-    background-color: #D9DBD4;
-    max-width: calc((100% / 12) * 6)!important; 
+    background-color: #ededed;
+    max-width: calc((100% / 12) * 6)!important;
+    align-self: flex-start; 
+    border-radius: 10px;
 
 }
 .image img{
@@ -75,9 +81,21 @@ img{
     max-width: 80px;
     border-radius: 100%;
 }
-.selected{
+
+
+.contact-item:active {
+    background-color: #D9DBD4;
+}
+.lst-msg{
+    font-size: .9rem;
+}
+.sel-red{
+    background-color: red;
+}
+.selectednow{
     background-color: #19a38870;
 }
-.contact-item:hover{
-    cursor: pointer;
+.date{
+    font-size: .8rem;
+    justify-self: flex-end;
 }

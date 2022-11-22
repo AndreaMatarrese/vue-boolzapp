@@ -4,8 +4,10 @@ new Vue({
     el: '#bool',
     data: {
         selected:'',
-        activeIndex:0,
+        activeIndex: 0,
         userName: '',
+        sendMex: '',
+        
         contacts:[
             {
             name: 'Michele',
@@ -172,10 +174,17 @@ new Vue({
         ]
     },
     methods:{
-        setActiveIndex(active, i){
+        setActiveIndex(index){
             this.activeIndex = index;
-            this.selected = 'selected';
+            
+        },
+        sendMessage(){
+            this.contacts[this.activeIndex].messages.push({
+                date: 'data',
+                message : this.sendMex,
+                status: 'sent',
+            });
+            this.sendMex = '';
         }
-    }
-   
-});
+    }    
+}); 
