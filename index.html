@@ -76,7 +76,9 @@
                     <!-- corpo -->
                 <div class="body-message overflow-scroll pt-3">
                     <div v-for="(Message, i) in contacts[activeIndex].messages" >
-                        <p class="row justify-content-start">{{ Message.message }}</p>
+                        <p class="row"
+                        :class="Message.status === 'received' ? 'writer':'answer'" 
+                        >{{ Message.message }}</p>
                         <p class="date row justify-content-end">{{Message.date}}</p>
                         <!-- <div class="writer me-5 p-2">
                             <p>prova</p>
